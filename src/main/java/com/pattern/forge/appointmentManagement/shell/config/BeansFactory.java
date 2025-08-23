@@ -1,8 +1,9 @@
-package com.pattern.forge.appointmentManagement.shell;
+package com.pattern.forge.appointmentManagement.shell.config;
 
-import com.pattern.forge.appointmentManagement.core.AppointmentRepository;
-import com.pattern.forge.appointmentManagement.core.AppointmentService;
-import com.pattern.forge.appointmentManagement.core.AppointmentServiceImpl;
+import com.pattern.forge.appointmentManagement.core.port.out.AppointmentRepository;
+import com.pattern.forge.appointmentManagement.core.port.in.AppointmentService;
+import com.pattern.forge.appointmentManagement.core.domain.AppointmentServiceImpl;
+import com.pattern.forge.appointmentManagement.shell.adapter.out.persistence.AppointmentPostgresRepo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

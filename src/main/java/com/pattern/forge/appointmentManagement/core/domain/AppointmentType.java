@@ -1,4 +1,4 @@
-package com.pattern.forge.appointmentManagement.core;
+package com.pattern.forge.appointmentManagement.core.domain;
 
 import lombok.Getter;
 

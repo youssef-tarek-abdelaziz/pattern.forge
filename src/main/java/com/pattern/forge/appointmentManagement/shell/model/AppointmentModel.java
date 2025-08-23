@@ -1,7 +1,7 @@
-package com.pattern.forge.appointmentManagement.shell;
+package com.pattern.forge.appointmentManagement.shell.model;
 
-import com.pattern.forge.appointmentManagement.core.AppointmentStatus;
-import com.pattern.forge.appointmentManagement.core.AppointmentType;
+import com.pattern.forge.appointmentManagement.core.domain.AppointmentStatus;
+import com.pattern.forge.appointmentManagement.core.domain.AppointmentType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

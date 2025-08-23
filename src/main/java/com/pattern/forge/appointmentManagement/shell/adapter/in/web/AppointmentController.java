@@ -1,9 +1,9 @@
-package com.pattern.forge.appointmentManagement.shell;
+package com.pattern.forge.appointmentManagement.shell.adapter.in.web;
 
 
-import com.pattern.forge.appointmentManagement.core.Appointment;
-import com.pattern.forge.appointmentManagement.core.AppointmentService;
-import com.pattern.forge.appointmentManagement.core.AppointmentStatus;
+import com.pattern.forge.appointmentManagement.core.domain.Appointment;
+import com.pattern.forge.appointmentManagement.core.port.in.AppointmentService;
+import com.pattern.forge.appointmentManagement.core.domain.AppointmentStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.pattern.forge.appointmentManagement.shell;
+package com.pattern.forge.appointmentManagement.shell.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

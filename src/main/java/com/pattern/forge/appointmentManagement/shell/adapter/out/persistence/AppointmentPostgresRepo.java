@@ -1,7 +1,9 @@
-package com.pattern.forge.appointmentManagement.shell;
+package com.pattern.forge.appointmentManagement.shell.adapter.out.persistence;
 
-import com.pattern.forge.appointmentManagement.core.Appointment;
-import com.pattern.forge.appointmentManagement.core.AppointmentRepository;
+import com.pattern.forge.appointmentManagement.core.domain.Appointment;
+import com.pattern.forge.appointmentManagement.core.port.out.AppointmentRepository;
+import com.pattern.forge.appointmentManagement.shell.repository.AppointmentJpaRepo;
+import com.pattern.forge.appointmentManagement.shell.model.AppointmentModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,7 @@
-package com.pattern.forge.appointmentManagement.core;
+package com.pattern.forge.appointmentManagement.core.port.in;
+
+import com.pattern.forge.appointmentManagement.core.domain.Appointment;
+import com.pattern.forge.appointmentManagement.core.domain.AppointmentStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;

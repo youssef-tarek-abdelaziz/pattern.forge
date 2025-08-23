@@ -1,6 +1,7 @@
-package com.pattern.forge.appointmentManagement.shell;
+package com.pattern.forge.appointmentManagement.shell.repository;
 
-import com.pattern.forge.appointmentManagement.core.AppointmentStatus;
+import com.pattern.forge.appointmentManagement.core.domain.AppointmentStatus;
+import com.pattern.forge.appointmentManagement.shell.model.AppointmentModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

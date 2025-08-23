@@ -1,5 +1,7 @@
-package com.pattern.forge.appointmentManagement.core;
+package com.pattern.forge.appointmentManagement.core.domain;
 
+import com.pattern.forge.appointmentManagement.core.port.out.AppointmentRepository;
+import com.pattern.forge.appointmentManagement.core.port.in.AppointmentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 
