@@ -25,7 +25,7 @@ appointmentManagement/
 │       └── out/AppointmentRepository.java   # Output Port
 └── shell/                                   # Infrastructure & Adapters
     ├── adapter/
-    │   ├── in/web/AppointmentController.java    # HTTP Adapter
+    │   ├── in/web/AppointmentController.java    # REST Adapter
     │   └── out/persistence/AppointmentPostgresRepo.java  # Database Adapter
     ├── config/BeansFactory.java            # Spring Configuration
     ├── model/                               # JPA Entities
@@ -35,6 +35,3 @@ appointmentManagement/
     │   └── TimeSlotModel.java
     └── repository/AppointmentJpaRepo.java   # JPA Repository Interface
 ```
-
-
-*This module demonstrates how Hexagonal Architecture can be applied to create maintainable, testable, and flexible software that clearly separates business concerns from infrastructure details.*
