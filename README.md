@@ -35,3 +35,5 @@ appointmentManagement/
     │   └── TimeSlotModel.java
     └── repository/AppointmentJpaRepo.java   # JPA Repository Interface
 ```
+*This module demonstrates how Hexagonal Architecture can be applied to create maintainable, testable, and flexible software that clearly separates business concerns from infrastructure details.*
+
