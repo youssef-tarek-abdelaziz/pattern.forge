@@ -1,4 +1,4 @@
-package com.pattern.forge.patientManagement.config;
+package com.pattern.forge.patientManagement.infrastructre.config;
 
 import com.pattern.forge.patientManagement.application.PatientApplicationService;
 import com.pattern.forge.patientManagement.infrastructre.adapter.PatientPostgresRepository;
