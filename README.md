@@ -103,6 +103,13 @@ appointmentManagement/
 ```
 *This module demonstrates how Hexagonal Architecture can be applied to create maintainable, testable, and flexible software that clearly separates business concerns from infrastructure details.*
 
+### **Appointment Management APIs**
+```http
+GET /api/appointment/{doctorId}                           # Get doctor's appointments
+GET /api/appointment/{doctorId}?to={datetime}             # Get appointments before date
+POST /api/appointment/{id}/{doctorId}/status/{status}     # Change appointment status
+```
+
 # Patient Management Module
 
 ## Overview
@@ -142,4 +149,9 @@ patientManagement/
 
 ```
 This module demonstrates how Onion Architecture can be applied to create domain-centric, and maintainable software that protects business logic at its core like hexagonal while ensuring dependencies flow inward from infrastructure to domain.
+
+### **Patient Management APIs**
+```http
+POST /api/patient/register          # Register new patient
+```
 
