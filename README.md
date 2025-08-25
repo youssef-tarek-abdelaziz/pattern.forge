@@ -1,3 +1,69 @@
+# Doctor Management & Timeslot Management Modules
+
+## Overview
+
+These modules implement **Layered Architecture** as part of the Pattern Forge multi-doctor clinic appointment booking system. They handle doctor profile management and time slot scheduling operations with clear separation between presentation, business, and data access layers.
+
+## Architecture Pattern: Layered Architecture
+
+### Layered Architecture
+
+Layered Architecture provides **clear separation of concerns** through well-defined layers, and these modules bussiness logic is simple
+
+## Module 1: Doctor Management
+
+### **Package Structure**
+```
+doctorManagement/
+├── controller/
+│   ├── DoctorController.java           # REST API endpoints
+│   └── DoctorApiDto.java              # Data Transfer Object
+├── service/
+│   ├── DoctorService.java             # Service interface
+│   └── DoctorServiceImpl.java         # Business logic implementation
+├── repository/
+│   └── DoctorRepository.java          # JPA repository interface
+├── domain/
+│   └── DoctorModel.java               # JPA entity
+└── enums/
+    └── DoctorSpecialty.java           # Specialty enumeration
+```
+
+## Module 2: Timeslot Management
+
+### **Functionality**
+- **Assign Timeslots to Doctor** - Create multiple time slots for a specific doctor
+- **Delete Timeslot** - Remove individual time slots
+
+### **Package Structure**
+```
+timeslotManagement/
+├── controller/
+│   ├── TimeslotController.java        # REST API endpoints
+│   └── TimeslotApiDto.java           # Data Transfer Object
+├── service/
+│   ├── TimeslotService.java          # Service interface
+│   └── TimeslotServiceImpl.java      # Business logic implementation
+├── repository/
+│   └── TimeslotRepository.java       # JPA repository interface
+└── domain/
+    └── TimeslotModel.java            # JPA entity
+```
+## API Endpoints
+
+### **Doctor Management APIs**
+```http
+POST /api/doctor                    # Add new doctor
+PUT /api/doctor                     # Update doctor information  
+GET /api/doctor/all                 # Get all doctors
+```
+
+### **Timeslot Management APIs**
+```http
+POST /api/timeslot/{doctorId}       # Assign timeslots to doctor
+DELETE /api/timeslot/{timeslotId}   # Delete specific timeslot
+```
+
 # Appointment Lifecycle Management Module
 
 ## Overview
