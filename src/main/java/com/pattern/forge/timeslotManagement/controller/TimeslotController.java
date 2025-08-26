@@ -21,6 +21,11 @@ public class TimeslotController {
         timeslotService.assignTimeslotsToDoctor(doctorId, timeslotModels);
     }
 
+    @GetMapping("/{timeslotId}")
+    public boolean findTimeslotById(@PathVariable("timeslotId") UUID timeslotId) {
+        return timeslotService.existsById(timeslotId);
+    }
+
     @DeleteMapping("/{timeslotId}")
     public void deleteTimeslot(@PathVariable("timeslotId") UUID timeslotId) {
         timeslotService.deleteTimeslot(timeslotId);

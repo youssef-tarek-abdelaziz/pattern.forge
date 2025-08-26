@@ -5,6 +5,7 @@ import com.pattern.forge.patientManagement.port.PatientRepository;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 public class PatientApplicationService {
 
@@ -21,5 +22,9 @@ public class PatientApplicationService {
             throw new RuntimeException("emails is already used");
         }
         patientRepository.save(patient);
+    }
+
+    public boolean isPatientExist(UUID patientId) {
+        return patientRepository.findById(patientId).isPresent();
     }
 }

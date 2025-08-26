@@ -29,16 +29,26 @@ public class TimeslotServiceImpl implements TimeslotService {
         timeslotModels.forEach(slot -> {
             slot.setDoctor(doctorModel.get());
             slot.setId(UUID.randomUUID());
+            slot.setStatus(TimeslotModel.Status.OPEN);
         });
         timeslotRepository.saveAll(timeslotModels);
+    }
+
+    @Override
+    public boolean existsById(UUID timeslotId) {
+        return timeslotRepository.existsById(timeslotId);
     }
 
     @Transactional
     @Override
     public void deleteTimeslot(UUID timeslotId) {
-        if(!timeslotRepository.existsById(timeslotId)) {
+        Optional<TimeslotModel> timeslotModel = timeslotRepository.findById(timeslotId);
+        if(timeslotModel.isEmpty()) {
             throw new RuntimeException("Timeslot is not exist");
         }
-        timeslotRepository.deleteById(timeslotId);
+        timeslotModel.get().setStatus(TimeslotModel.Status.DELETED);
+        timeslotRepository.save(timeslotModel.get());
     }
+
+
 }

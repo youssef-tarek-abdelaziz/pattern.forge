@@ -21,6 +21,7 @@
                 doctor_id UUID NOT NULL REFERENCES doctor(id) ON DELETE CASCADE,
                 slot_datetime TIMESTAMP NOT NULL,
                 duration INTEGER NOT NULL,
+                status VARCHAR(50) CHECK (status IN ('OPEN', 'DELETED')),
                 UNIQUE(doctor_id, slot_datetime)
             );
 
@@ -36,7 +37,6 @@
                 id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
                 slot_id UUID NOT NULL REFERENCES time_slot(id) ON DELETE RESTRICT,
                 patient_id UUID NOT NULL REFERENCES patient(id) ON DELETE CASCADE,
-                doctor_id UUID NOT NULL REFERENCES doctor(id) ON DELETE RESTRICT,
                 appointment_type VARCHAR(20) NOT NULL CHECK (appointment_type IN ('CONSULTATION', 'FOLLOWUP')),
                 status VARCHAR(20) NOT NULL
                 CHECK (status IN ('RESERVED', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED')),

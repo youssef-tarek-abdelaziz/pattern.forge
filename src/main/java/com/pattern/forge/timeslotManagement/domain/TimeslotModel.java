@@ -23,8 +23,15 @@ public class TimeslotModel {
     @JoinColumn(name = "doctor_id")
     private DoctorModel doctor;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     public TimeslotModel(LocalDateTime slotDatetime, int duration) {
         this.slotDatetime = slotDatetime;
         this.duration = duration;
+    }
+    public enum Status {
+        OPEN,
+        DELETED
     }
 }

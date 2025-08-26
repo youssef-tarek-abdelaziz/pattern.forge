@@ -4,6 +4,8 @@ import com.pattern.forge.patientManagement.application.PatientApplicationService
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/patient")
 public class PatientController {
@@ -19,5 +21,10 @@ public class PatientController {
                 patientApiDto.getDateOfBirth(),
                 patientApiDto.getPhone()
         );
+    }
+
+    @GetMapping("/{patientId}")
+    public boolean isPatientExists(@PathVariable UUID patientId) {
+        return patientApplicationService.isPatientExist(patientId);
     }
 }

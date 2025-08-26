@@ -37,4 +37,14 @@ public class PatientPostgresRepository implements PatientRepository {
                         patientModel.getDateOfBirth()
         ));
     }
+
+    @Override
+    public Optional<Patient> findById(UUID id) {
+        return patientJpaRepository.findById(id)
+                .map((patientModel) -> new Patient(patientModel.getName(),
+                        patientModel.getEmail(),
+                        patientModel.getPhone(),
+                        patientModel.getDateOfBirth()
+                ));
+    }
 }
