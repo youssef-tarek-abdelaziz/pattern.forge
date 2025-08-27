@@ -8,7 +8,7 @@ These modules implement **Layered Architecture** as part of the Pattern Forge mu
 
 ### Layered Architecture
 
-Layered Architecture provides **clear separation of concerns** through well-defined layers, and these modules bussiness logic is simple
+Layered Architecture provides clear separation of concerns through well-defined layers, and these modules bussiness logic is simple
 
 ## Module 1: Doctor Management
 
@@ -33,7 +33,7 @@ doctorManagement/
 
 ### **Functionality**
 - **Assign Timeslots to Doctor** - Create multiple time slots for a specific doctor
-- **Delete Timeslot** - Remove individual time slots
+- **Delete Timeslot** - Soft delete for the reserved time slots
 
 ### **Package Structure**
 ```
@@ -85,13 +85,13 @@ Hexagonal Architecture ensures that the business logic is completely isolated fr
 
 ```
 appointmentManagement/
-├── core/                                    # Business Logic & Contracts
+├── core/                                    # Business Logic
 │   ├── domain/                              # Domain Entities & Services
 │   │   ├── Appointment.java                 # Domain Entity
-│   │   ├── AppointmentServiceImpl.java      # Application Service
+│   │   ├── AppointmentServiceImpl.java      # Service
 │   │   ├── AppointmentStatus.java           # Value Object
 │   │   └── AppointmentType.java             # Value Object
-│   └── port/                                # Interfaces (Contracts)
+│   └── port/                                # Interfaces (Ports)
 │       ├── in/AppointmentService.java       # Input Port
 │       └── out/AppointmentRepository.java   # Output Port
 └── shell/                                   # Infrastructure & Adapters
@@ -106,7 +106,7 @@ appointmentManagement/
     │   └── TimeSlotModel.java
     └── repository/AppointmentJpaRepo.java   # JPA Repository Interface
 ```
-*This module demonstrates how Hexagonal Architecture can be applied to create maintainable, testable, and flexible software that clearly separates business concerns from infrastructure details.*
+*This module demonstrates how Hexagonal Architecture can be applied to create maintainable, and flexible software that clearly separates business concerns from infrastructure details.*
 
 ### **Appointment Management APIs**
 ```http
@@ -147,7 +147,7 @@ patientManagement/
 │   |   ├── PatientJpaRepository.java      # JPA Repository Interface
 │   |   └── PatientModel.java              # JPA Entity
 |   └── config/
-|           └── BeanFactory.java      # Spring Configuration
+|           └── PatientBeanFactory.java      # Spring Configuration
 ├── presentation/                    # Presentation Layer
 │   ├── PatientController.java       # REST Controller
 │   └── PatientApiDto.java          # Data Transfer Object
@@ -159,7 +159,116 @@ patientManagement/
 This module demonstrates how Onion Architecture can be applied to create domain-centric, and maintainable software that protects business logic at its core like hexagonal while ensuring dependencies flow inward from infrastructure to domain.
 
 ### **Patient Management APIs**
+
+Appointment Booking Module
+Overview
+The Appointment Booking module is implemented using Clean Architecture as part of the Pattern Forge multi-doctor clinic appointment booking system. This module handles the core business logic for booking medical appointments, ensuring patient-doctor appointment scheduling with proper validation and business rule enforcement.
+Architecture Pattern: Clean Architecture
+Clean Architecture
+Clean Architecture ensures that business logic is completely independent of external frameworks, databases, and delivery mechanisms. The architecture follows the dependency inversion principle, where high-level modules do not depend on low-level modules, and both depend on abstractions.
+Module Structure
+appointmentBooking/
+├── entities/                                    # Enterprise Business Rules
+│   ├── Appointment.java                         # Core Business Entity
+│   ├── AppointmentStatus.java                   # Value Object
+│   └── AppointmentType.java                     # Value Object
+├── usecases/                                    # Application Business Rules
+│   ├── BookAppointmentUseCase.java             # Use Case Interface
+│   ├── BookAppointmentUseCaseImpl.java         # Use Case Implementation
+│   └── gateway/                                 # Gateway Interfaces (Output Ports)
+│       ├── AppointmentGateway.java             # Appointment Persistence Contract
+│       ├── PatientGateway.java                 # Patient Validation Contract
+│       └── TimeslotGateway.java                # Timeslot Management Contract
+├── adapter/                                     # Interface Adapters
+│   ├── controller/                              # Web Controllers (Input Adapters)
+│   │   ├── AppointmentBookingController.java   # REST API Controller
+│   │   └── BookAppointmentApiDto.java          # API Request DTO
+│   ├── gatewayAdapters/                        # Gateway Implementations (Output Adapters)
+│   │   ├── AppointmentPostgresGateway.java     # Database Adapter
+│   │   ├── PatientApiGateway.java              # Patient Module Integration
+│   │   ├── TimeslotApiGateway.java             # Timeslot Module Integration
+│   │   └── dto/                                 # External API DTOs
+│   │       ├── PatientApiDto.java
+│   │       └── TimeslotApiDto.java
+│   └── persistence/                             # Database Models & Repositories
+│       ├── AppointmentBookingModel.java        # JPA Entity
+│       └── AppointmentBookingRepository.java   # JPA Repository Interface
+└── config/
+    └── AppointmentBookingBeanFactory.java      # Dependency Injection Configuration
 ```http
 POST /api/patient/register          # Register new patient
 ```
+# Appointment Booking Module
 
+## Overview
+
+The **Appointment Booking** module is implemented using **Clean Architecture** as part of the Pattern Forge multi-doctor clinic appointment booking system. This module handles the core business logic for booking medical appointments, ensuring patient-doctor appointment scheduling with proper validation and business rule enforcement.
+
+**Architecture Pattern**: Clean Architecture
+
+## Clean Architecture
+
+Clean Architecture is like the onion architecture but it takes the single responsipility pricinciple to the next level by the concept of usecases. 
+As a domain centric model, the business logic is completely independent of external frameworks, databases.
+
+## Module Structure
+
+```
+appointmentBooking/
+├── entities/                                    # Enterprise Business Rules
+│   ├── Appointment.java                         # Core Business Entity
+│   ├── AppointmentStatus.java                   # Value Object
+│   └── AppointmentType.java                     # Value Object
+├── usecases/                                    # Application Business Rules
+│   ├── BookAppointmentUseCase.java             # Use Case Interface
+│   ├── BookAppointmentUseCaseImpl.java         # Use Case Implementation
+│   └── gateway/                                 # Gateway Interfaces (Output Ports)
+│       ├── AppointmentGateway.java             # Appointment Persistence Contract
+│       ├── PatientGateway.java                 # Patient Validation Contract
+│       └── TimeslotGateway.java                # Timeslot Management Contract
+├── adapter/                                     # Interface Adapters
+│   ├── controller/                              # Web Controllers (Input Adapters)
+│   │   ├── AppointmentBookingController.java   # REST API Controller
+│   │   └── BookAppointmentApiDto.java          # API Request DTO
+│   ├── gatewayAdapters/                        # Gateway Implementations (Output Adapters)
+│   │   ├── AppointmentPostgresGateway.java     # Database Adapter
+│   │   ├── PatientApiGateway.java              # Patient Module Integration
+│   │   ├── TimeslotApiGateway.java             # Timeslot Module Integration
+│   │   └── dto/                                 # External API DTOs
+│   │       ├── PatientApiDto.java
+│   │       └── TimeslotApiDto.java
+│   └── persistence/                             # Database Models & Repositories
+│       ├── AppointmentBookingModel.java        # JPA Entity
+│       └── AppointmentBookingRepository.java   # JPA Repository Interface
+└── config/
+    └── AppointmentBookingBeanFactory.java      # Dependency Injection Configuration
+```
+### Cross-Module Integration
+- **Patient Management**: Validates patient existence via `PatientGateway`
+- **Timeslot Management**: Checks availability and reserves slots via `TimeslotGateway`
+- **Notification System**: Ready for integration via domain events
+
+## API Endpoints
+
+```http
+POST /api/appointment/booking    # Book a new appointment
+```
+
+**Request Body:**
+```json
+{
+  "slotId": "uuid",
+  "patientId": "uuid", 
+  "appointmentType": "CONSULTATION|FOLLOWUP"
+}
+```
+
+## Dependencies
+
+The module integrates with other Pattern Forge modules through well-defined contracts:
+
+- **Patient Management Module**: Patient existence validation
+- **Timeslot Management Module**: Slot availability and reservation
+- **Notification Module**: Appointment confirmation (ready for integration)
+
+*This module demonstrates how Clean Architecture can be applied to create robust, maintainable appointment booking functionality that clearly separates business logic from infrastructure concerns while enabling seamless integration with other system modules.*
