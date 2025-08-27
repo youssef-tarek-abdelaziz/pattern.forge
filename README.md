@@ -198,4 +198,76 @@ appointmentBooking/
 ```http
 POST /api/patient/register          # Register new patient
 ```
+# Appointment Booking Module
 
+## Overview
+
+The **Appointment Booking** module is implemented using **Clean Architecture** as part of the Pattern Forge multi-doctor clinic appointment booking system. This module handles the core business logic for booking medical appointments, ensuring patient-doctor appointment scheduling with proper validation and business rule enforcement.
+
+**Architecture Pattern**: Clean Architecture
+
+## Clean Architecture
+
+Clean Architecture ensures that business logic is completely independent of external frameworks, databases, and delivery mechanisms. The architecture follows the dependency inversion principle, where high-level modules do not depend on low-level modules, and both depend on abstractions.
+
+## Module Structure
+
+```
+appointmentBooking/
+├── entities/                                    # Enterprise Business Rules
+│   ├── Appointment.java                         # Core Business Entity
+│   ├── AppointmentStatus.java                   # Value Object
+│   └── AppointmentType.java                     # Value Object
+├── usecases/                                    # Application Business Rules
+│   ├── BookAppointmentUseCase.java             # Use Case Interface
+│   ├── BookAppointmentUseCaseImpl.java         # Use Case Implementation
+│   └── gateway/                                 # Gateway Interfaces (Output Ports)
+│       ├── AppointmentGateway.java             # Appointment Persistence Contract
+│       ├── PatientGateway.java                 # Patient Validation Contract
+│       └── TimeslotGateway.java                # Timeslot Management Contract
+├── adapter/                                     # Interface Adapters
+│   ├── controller/                              # Web Controllers (Input Adapters)
+│   │   ├── AppointmentBookingController.java   # REST API Controller
+│   │   └── BookAppointmentApiDto.java          # API Request DTO
+│   ├── gatewayAdapters/                        # Gateway Implementations (Output Adapters)
+│   │   ├── AppointmentPostgresGateway.java     # Database Adapter
+│   │   ├── PatientApiGateway.java              # Patient Module Integration
+│   │   ├── TimeslotApiGateway.java             # Timeslot Module Integration
+│   │   └── dto/                                 # External API DTOs
+│   │       ├── PatientApiDto.java
+│   │       └── TimeslotApiDto.java
+│   └── persistence/                             # Database Models & Repositories
+│       ├── AppointmentBookingModel.java        # JPA Entity
+│       └── AppointmentBookingRepository.java   # JPA Repository Interface
+└── config/
+    └── AppointmentBookingBeanFactory.java      # Dependency Injection Configuration
+```
+### Cross-Module Integration
+- **Patient Management**: Validates patient existence via `PatientGateway`
+- **Timeslot Management**: Checks availability and reserves slots via `TimeslotGateway`
+- **Notification System**: Ready for integration via domain events
+
+## API Endpoints
+
+```http
+POST /api/appointment/booking    # Book a new appointment
+```
+
+**Request Body:**
+```json
+{
+  "slotId": "uuid",
+  "patientId": "uuid", 
+  "appointmentType": "CONSULTATION|FOLLOWUP"
+}
+```
+
+## Dependencies
+
+The module integrates with other Pattern Forge modules through well-defined contracts:
+
+- **Patient Management Module**: Patient existence validation
+- **Timeslot Management Module**: Slot availability and reservation
+- **Notification Module**: Appointment confirmation (ready for integration)
+
+*This module demonstrates how Clean Architecture can be applied to create robust, maintainable appointment booking functionality that clearly separates business logic from infrastructure concerns while enabling seamless integration with other system modules.*
