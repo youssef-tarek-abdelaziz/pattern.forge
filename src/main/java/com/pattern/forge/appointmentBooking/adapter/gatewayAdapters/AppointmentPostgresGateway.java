@@ -1,4 +1,4 @@
-package com.pattern.forge.appointmentBooking.adapter.gateway;
+package com.pattern.forge.appointmentBooking.adapter.gatewayAdapters;
 
 import com.pattern.forge.appointmentBooking.adapter.persistence.AppointmentBookingModel;
 import com.pattern.forge.appointmentBooking.adapter.persistence.AppointmentBookingRepository;
@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Component
 public class AppointmentPostgresGateway implements AppointmentGateway {
@@ -19,7 +18,7 @@ public class AppointmentPostgresGateway implements AppointmentGateway {
     @Override
     public void save(Appointment appointment) {
         AppointmentBookingModel appointmentModel = new AppointmentBookingModel();
-        appointmentModel.setId(UUID.randomUUID());
+        appointmentModel.setId(appointment.getId());
         appointmentModel.setAppointmentType(appointment.getType().name());
         appointmentModel.setReservedAt(LocalDateTime.now());
         appointmentModel.setPatientId(appointment.getPatientId());
