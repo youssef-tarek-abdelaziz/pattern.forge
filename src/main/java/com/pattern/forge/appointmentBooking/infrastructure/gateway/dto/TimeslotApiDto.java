@@ -1,4 +1,4 @@
-package com.pattern.forge.appointmentBooking.adapter.gatewayAdapters.dto;
+package com.pattern.forge.appointmentBooking.infrastructure.gateway.dto;
 
 import lombok.Getter;
 import lombok.Setter;

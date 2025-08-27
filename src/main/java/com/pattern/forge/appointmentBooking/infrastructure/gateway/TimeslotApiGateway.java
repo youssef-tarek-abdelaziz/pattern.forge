@@ -1,4 +1,4 @@
-package com.pattern.forge.appointmentBooking.adapter.gatewayAdapters;
+package com.pattern.forge.appointmentBooking.infrastructure.gateway;
 
 
 import com.pattern.forge.appointmentBooking.usecases.gatway.TimeslotGateway;

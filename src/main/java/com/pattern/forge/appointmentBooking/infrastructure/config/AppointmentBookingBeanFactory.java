@@ -1,8 +1,8 @@
 package com.pattern.forge.appointmentBooking.infrastructure.config;
 
-import com.pattern.forge.appointmentBooking.adapter.gatewayAdapters.AppointmentPostgresGateway;
-import com.pattern.forge.appointmentBooking.adapter.gatewayAdapters.PatientApiGateway;
-import com.pattern.forge.appointmentBooking.adapter.gatewayAdapters.TimeslotApiGateway;
+import com.pattern.forge.appointmentBooking.infrastructure.gateway.AppointmentPostgresGateway;
+import com.pattern.forge.appointmentBooking.infrastructure.gateway.PatientApiGateway;
+import com.pattern.forge.appointmentBooking.infrastructure.gateway.TimeslotApiGateway;
 import com.pattern.forge.appointmentBooking.usecases.BookAppointmentUseCaseImpl;
 import com.pattern.forge.appointmentBooking.usecases.gatway.AppointmentGateway;
 import com.pattern.forge.appointmentBooking.usecases.gatway.PatientGateway;
