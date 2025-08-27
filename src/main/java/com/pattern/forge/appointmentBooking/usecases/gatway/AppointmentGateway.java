@@ -2,6 +2,8 @@ package com.pattern.forge.appointmentBooking.usecases.gatway;
 
 import com.pattern.forge.appointmentBooking.entities.Appointment;
 
+import java.util.UUID;
+
 public interface AppointmentGateway {
-    void save(Appointment appointment);
+    UUID save(Appointment appointment);
 }

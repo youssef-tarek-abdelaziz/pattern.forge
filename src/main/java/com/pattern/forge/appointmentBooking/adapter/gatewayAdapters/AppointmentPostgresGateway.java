@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Component
 public class AppointmentPostgresGateway implements AppointmentGateway {
@@ -16,14 +17,15 @@ public class AppointmentPostgresGateway implements AppointmentGateway {
     private AppointmentBookingRepository appointmentRepository;
 
     @Override
-    public void save(Appointment appointment) {
+    public UUID save(Appointment appointment) {
         AppointmentBookingModel appointmentModel = new AppointmentBookingModel();
         appointmentModel.setId(appointment.getId());
         appointmentModel.setAppointmentType(appointment.getType().name());
-        appointmentModel.setReservedAt(LocalDateTime.now());
+        appointmentModel.setReservedAt(appointment.getReservedAt());
         appointmentModel.setPatientId(appointment.getPatientId());
         appointmentModel.setSlotId(appointment.getSlotId());
         appointmentModel.setStatus(appointment.getStatus().name());
         appointmentRepository.save(appointmentModel);
+        return appointment.getId();
     }
 }

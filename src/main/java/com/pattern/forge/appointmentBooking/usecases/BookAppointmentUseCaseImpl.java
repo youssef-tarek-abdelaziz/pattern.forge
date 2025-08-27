@@ -23,17 +23,17 @@ public class BookAppointmentUseCaseImpl implements BookAppointmentUseCase {
 
     @Transactional
     @Override
-    public void execute(UUID timeslotId, UUID patientId, String appointmentType) {
+    public UUID execute(UUID slotId, UUID patientId, String appointmentType) {
         boolean isPatientExist = patientGateway.isPatientExist(patientId);
         if(!isPatientExist) {
             throw new IllegalArgumentException("No Patient exists with id: " + patientId);
         }
-        boolean isTimeslotAvailable = timeslotGateway.isTimeslotAvailable(timeslotId);
+        boolean isTimeslotAvailable = timeslotGateway.isTimeslotAvailable(slotId);
         if(!isTimeslotAvailable) {
             throw new IllegalArgumentException("No timeslot available");
         }
-        Appointment appointment = new Appointment(timeslotId, patientId, AppointmentType.valueOf(appointmentType));
-        timeslotGateway.deleteTimeslot(timeslotId);
-        appointmentGateway.save(appointment);
+        Appointment appointment = new Appointment(slotId, patientId, AppointmentType.valueOf(appointmentType));
+        timeslotGateway.deleteTimeslot(slotId);
+        return appointmentGateway.save(appointment);
     }
 }
