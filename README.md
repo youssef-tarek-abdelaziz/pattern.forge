@@ -47,7 +47,12 @@ timeslotManagement/
 ├── repository/
 │   └── TimeslotRepository.java       # JPA repository interface
 └── domain/
-    └── TimeslotModel.java            # JPA entity
+|   └── TimeslotModel.java            # JPA entity
+└── contract/
+    └── TimeslotApi.java            # Timeslot Contract
+    └── TimeslotApiImpl.java        # Timeslot Contract Implementation
+
+
 ```
 ## API Endpoints
 
@@ -146,6 +151,9 @@ patientManagement/
 ├── presentation/                    # Presentation Layer
 │   ├── PatientController.java       # REST Controller
 │   └── PatientApiDto.java          # Data Transfer Object
+├── contract/                    
+│   ├── PatientAPI.java             # Patient Contract
+│   └── PatientApiDto.java          # Patient Contract Implementation
 
 ```
 This module demonstrates how Onion Architecture can be applied to create domain-centric, and maintainable software that protects business logic at its core like hexagonal while ensuring dependencies flow inward from infrastructure to domain.
