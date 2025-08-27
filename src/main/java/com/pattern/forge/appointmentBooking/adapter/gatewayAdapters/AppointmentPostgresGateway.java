@@ -1,13 +1,12 @@
 package com.pattern.forge.appointmentBooking.adapter.gatewayAdapters;
 
-import com.pattern.forge.appointmentBooking.adapter.persistence.AppointmentBookingModel;
-import com.pattern.forge.appointmentBooking.adapter.persistence.AppointmentBookingRepository;
+import com.pattern.forge.appointmentBooking.infrastructure.persistence.AppointmentBookingModel;
+import com.pattern.forge.appointmentBooking.infrastructure.persistence.AppointmentBookingRepository;
 import com.pattern.forge.appointmentBooking.entities.Appointment;
 import com.pattern.forge.appointmentBooking.usecases.gatway.AppointmentGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Component

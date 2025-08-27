@@ -2,8 +2,8 @@ package com.pattern.forge.timeslotManagement.service;
 
 import com.pattern.forge.doctorManagement.domain.DoctorModel;
 import com.pattern.forge.doctorManagement.repository.DoctorRepository;
-import com.pattern.forge.timeslotManagement.domain.TimeslotModel;
-import com.pattern.forge.timeslotManagement.repository.TimeslotRepository;
+import com.pattern.forge.timeslotManagement.persistence.domain.TimeslotModel;
+import com.pattern.forge.timeslotManagement.persistence.repository.TimeslotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

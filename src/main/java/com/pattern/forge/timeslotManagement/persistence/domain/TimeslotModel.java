@@ -1,4 +1,4 @@
-package com.pattern.forge.timeslotManagement.domain;
+package com.pattern.forge.timeslotManagement.persistence.domain;
 
 import com.pattern.forge.doctorManagement.domain.DoctorModel;
 import jakarta.persistence.*;

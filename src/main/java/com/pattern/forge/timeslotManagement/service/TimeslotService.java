@@ -1,6 +1,6 @@
 package com.pattern.forge.timeslotManagement.service;
 
-import com.pattern.forge.timeslotManagement.domain.TimeslotModel;
+import com.pattern.forge.timeslotManagement.persistence.domain.TimeslotModel;
 
 import java.util.List;
 import java.util.UUID;

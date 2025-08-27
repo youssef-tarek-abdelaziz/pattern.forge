@@ -1,4 +1,4 @@
-package com.pattern.forge.appointmentBooking.config;
+package com.pattern.forge.appointmentBooking.infrastructure.config;
 
 import com.pattern.forge.appointmentBooking.adapter.gatewayAdapters.AppointmentPostgresGateway;
 import com.pattern.forge.appointmentBooking.adapter.gatewayAdapters.PatientApiGateway;

@@ -1,4 +1,4 @@
-package com.pattern.forge.appointmentBooking.adapter.persistence;
+package com.pattern.forge.appointmentBooking.infrastructure.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

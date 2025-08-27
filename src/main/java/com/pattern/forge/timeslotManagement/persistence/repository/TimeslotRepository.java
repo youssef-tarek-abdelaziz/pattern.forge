@@ -1,7 +1,6 @@
-package com.pattern.forge.timeslotManagement.repository;
+package com.pattern.forge.timeslotManagement.persistence.repository;
 
-import com.pattern.forge.timeslotManagement.domain.TimeslotModel;
-import org.apache.commons.text.translate.UnicodeUnescaper;
+import com.pattern.forge.timeslotManagement.persistence.domain.TimeslotModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

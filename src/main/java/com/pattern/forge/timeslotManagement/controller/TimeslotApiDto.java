@@ -1,6 +1,6 @@
 package com.pattern.forge.timeslotManagement.controller;
 
-import com.pattern.forge.timeslotManagement.domain.TimeslotModel;
+import com.pattern.forge.timeslotManagement.persistence.domain.TimeslotModel;
 import lombok.Getter;
 import lombok.Setter;
 

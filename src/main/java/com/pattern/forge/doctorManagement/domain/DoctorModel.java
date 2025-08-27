@@ -1,7 +1,7 @@
 package com.pattern.forge.doctorManagement.domain;
 
 import com.pattern.forge.doctorManagement.enums.DoctorSpecialty;
-import com.pattern.forge.timeslotManagement.domain.TimeslotModel;
+import com.pattern.forge.timeslotManagement.persistence.domain.TimeslotModel;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

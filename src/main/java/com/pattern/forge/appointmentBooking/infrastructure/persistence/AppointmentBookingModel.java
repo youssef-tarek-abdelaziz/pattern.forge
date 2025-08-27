@@ -1,4 +1,4 @@
-package com.pattern.forge.appointmentBooking.adapter.persistence;
+package com.pattern.forge.appointmentBooking.infrastructure.persistence;
 
 import jakarta.persistence.*;
 import lombok.Getter;
