@@ -1,6 +1,4 @@
-package com.pattern.forge.timeslotManagement.timeslotApi;
-
-import org.springframework.stereotype.Component;
+package com.pattern.forge.timeslotManagement.contract;
 
 import java.util.UUID;
 

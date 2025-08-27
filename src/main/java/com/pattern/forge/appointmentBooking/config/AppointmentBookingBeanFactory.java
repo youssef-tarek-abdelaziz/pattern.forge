@@ -8,7 +8,7 @@ import com.pattern.forge.appointmentBooking.usecases.gatway.AppointmentGateway;
 import com.pattern.forge.appointmentBooking.usecases.gatway.PatientGateway;
 import com.pattern.forge.appointmentBooking.usecases.gatway.TimeslotGateway;
 import com.pattern.forge.patientManagement.contract.PatientAPI;
-import com.pattern.forge.timeslotManagement.timeslotApi.TimeslotApi;
+import com.pattern.forge.timeslotManagement.contract.TimeslotApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

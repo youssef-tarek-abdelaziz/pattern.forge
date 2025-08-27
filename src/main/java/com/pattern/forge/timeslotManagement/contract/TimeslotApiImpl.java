@@ -1,4 +1,4 @@
-package com.pattern.forge.timeslotManagement.timeslotApi;
+package com.pattern.forge.timeslotManagement.contract;
 
 import com.pattern.forge.timeslotManagement.service.TimeslotService;
 import org.springframework.beans.factory.annotation.Autowired;

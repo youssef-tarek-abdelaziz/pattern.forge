@@ -2,7 +2,7 @@ package com.pattern.forge.appointmentBooking.adapter.gatewayAdapters;
 
 
 import com.pattern.forge.appointmentBooking.usecases.gatway.TimeslotGateway;
-import com.pattern.forge.timeslotManagement.timeslotApi.TimeslotApi;
+import com.pattern.forge.timeslotManagement.contract.TimeslotApi;
 
 import java.util.UUID;
 
