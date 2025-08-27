@@ -8,7 +8,7 @@ These modules implement **Layered Architecture** as part of the Pattern Forge mu
 
 ### Layered Architecture
 
-Layered Architecture provides **clear separation of concerns** through well-defined layers, and these modules bussiness logic is simple
+Layered Architecture provides clear separation of concerns through well-defined layers, and these modules bussiness logic is simple
 
 ## Module 1: Doctor Management
 
@@ -33,7 +33,7 @@ doctorManagement/
 
 ### **Functionality**
 - **Assign Timeslots to Doctor** - Create multiple time slots for a specific doctor
-- **Delete Timeslot** - Remove individual time slots
+- **Delete Timeslot** - Soft delete for the reserved time slots
 
 ### **Package Structure**
 ```
@@ -85,13 +85,13 @@ Hexagonal Architecture ensures that the business logic is completely isolated fr
 
 ```
 appointmentManagement/
-├── core/                                    # Business Logic & Contracts
+├── core/                                    # Business Logic
 │   ├── domain/                              # Domain Entities & Services
 │   │   ├── Appointment.java                 # Domain Entity
-│   │   ├── AppointmentServiceImpl.java      # Application Service
+│   │   ├── AppointmentServiceImpl.java      # Service
 │   │   ├── AppointmentStatus.java           # Value Object
 │   │   └── AppointmentType.java             # Value Object
-│   └── port/                                # Interfaces (Contracts)
+│   └── port/                                # Interfaces (Ports)
 │       ├── in/AppointmentService.java       # Input Port
 │       └── out/AppointmentRepository.java   # Output Port
 └── shell/                                   # Infrastructure & Adapters
@@ -106,7 +106,7 @@ appointmentManagement/
     │   └── TimeSlotModel.java
     └── repository/AppointmentJpaRepo.java   # JPA Repository Interface
 ```
-*This module demonstrates how Hexagonal Architecture can be applied to create maintainable, testable, and flexible software that clearly separates business concerns from infrastructure details.*
+*This module demonstrates how Hexagonal Architecture can be applied to create maintainable, and flexible software that clearly separates business concerns from infrastructure details.*
 
 ### **Appointment Management APIs**
 ```http
@@ -147,7 +147,7 @@ patientManagement/
 │   |   ├── PatientJpaRepository.java      # JPA Repository Interface
 │   |   └── PatientModel.java              # JPA Entity
 |   └── config/
-|           └── BeanFactory.java      # Spring Configuration
+|           └── PatientBeanFactory.java      # Spring Configuration
 ├── presentation/                    # Presentation Layer
 │   ├── PatientController.java       # REST Controller
 │   └── PatientApiDto.java          # Data Transfer Object
@@ -208,7 +208,8 @@ The **Appointment Booking** module is implemented using **Clean Architecture** a
 
 ## Clean Architecture
 
-Clean Architecture ensures that business logic is completely independent of external frameworks, databases, and delivery mechanisms. The architecture follows the dependency inversion principle, where high-level modules do not depend on low-level modules, and both depend on abstractions.
+Clean Architecture is like the onion architecture but it takes the single responsipility pricinciple to the next level by the concept of usecases. 
+As a domain centric model, the business logic is completely independent of external frameworks, databases.
 
 ## Module Structure
 
