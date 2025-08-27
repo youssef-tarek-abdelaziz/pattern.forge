@@ -1,3 +1,43 @@
+# Pattern Forge - Multi-Architecture Clinic System
+
+## Project Overview
+
+**Pattern Forge** is a **modular monolith** clinic appointment booking system that demonstrates **4 different architectural patterns** within a single Spring Boot application. Each module handles a specific business domain using a different architectural approach.
+
+## Architecture Style: Modular Monolith
+- Single deployable Spring Boot application
+- Clear module boundaries with defined contracts
+- Inter-module communication through well-defined APIs
+- Shared database with proper table relationships
+
+## Modules & Architecture Patterns
+
+### 1. **Doctor & Timeslot Management** - Layered Architecture
+- **Simple CRUD operations** with clear layer separation
+- **Structure:** Controller → Service → Repository → Entity
+- **Purpose:** Manage doctor profiles and time slot scheduling
+
+### 2. **Patient Management** - Onion Architecture
+- **Domain-centric design** with rich value objects (Name, Email, PhoneNumber)
+- **Structure:** Domain (core) → Application → Infrastructure → Presentation
+- **Purpose:** Patient registration and information management
+
+### 3. **Appointment Lifecycle Management** - Hexagonal Architecture
+- **Ports & Adapters pattern** isolating business logic from external concerns
+- **Structure:** Core (Domain + Ports) → Shell (Adapters + Infrastructure)
+- **Purpose:** Complete appointment lifecycle from scheduling to completion
+
+### 4. **Appointment Booking** - Clean Architecture
+- **Use case-driven design** with strict dependency inversion
+- **Structure:** Entities → Use Cases → Interface Adapters → Frameworks & Drivers
+- **Purpose:** Core booking logic with patient validation and slot reservation
+
+## Technology Stack
+- **Framework:** Spring Boot 3.5.4
+- **Database:** PostgreSQL with Liquibase migrations
+- **Build Tool:** Maven
+- **Java Version:** 21
+
 # Doctor Management & Timeslot Management Modules
 
 ## Overview
@@ -157,44 +197,8 @@ patientManagement/
 
 ```
 This module demonstrates how Onion Architecture can be applied to create domain-centric, and maintainable software that protects business logic at its core like hexagonal while ensuring dependencies flow inward from infrastructure to domain.
+# Patient Management API
 
-### **Patient Management APIs**
-
-Appointment Booking Module
-Overview
-The Appointment Booking module is implemented using Clean Architecture as part of the Pattern Forge multi-doctor clinic appointment booking system. This module handles the core business logic for booking medical appointments, ensuring patient-doctor appointment scheduling with proper validation and business rule enforcement.
-Architecture Pattern: Clean Architecture
-Clean Architecture
-Clean Architecture ensures that business logic is completely independent of external frameworks, databases, and delivery mechanisms. The architecture follows the dependency inversion principle, where high-level modules do not depend on low-level modules, and both depend on abstractions.
-Module Structure
-appointmentBooking/
-├── entities/                                    # Enterprise Business Rules
-│   ├── Appointment.java                         # Core Business Entity
-│   ├── AppointmentStatus.java                   # Value Object
-│   └── AppointmentType.java                     # Value Object
-├── usecases/                                    # Application Business Rules
-│   ├── BookAppointmentUseCase.java             # Use Case Interface
-│   ├── BookAppointmentUseCaseImpl.java         # Use Case Implementation
-│   └── gateway/                                 # Gateway Interfaces (Output Ports)
-│       ├── AppointmentGateway.java             # Appointment Persistence Contract
-│       ├── PatientGateway.java                 # Patient Validation Contract
-│       └── TimeslotGateway.java                # Timeslot Management Contract
-├── adapter/                                     # Interface Adapters
-│   ├── controller/                              # Web Controllers (Input Adapters)
-│   │   ├── AppointmentBookingController.java   # REST API Controller
-│   │   └── BookAppointmentApiDto.java          # API Request DTO
-│   ├── gatewayAdapters/                        # Gateway Implementations (Output Adapters)
-│   │   ├── AppointmentPostgresGateway.java     # Database Adapter
-│   │   ├── PatientApiGateway.java              # Patient Module Integration
-│   │   ├── TimeslotApiGateway.java             # Timeslot Module Integration
-│   │   └── dto/                                 # External API DTOs
-│   │       ├── PatientApiDto.java
-│   │       └── TimeslotApiDto.java
-│   └── persistence/                             # Database Models & Repositories
-│       ├── AppointmentBookingModel.java        # JPA Entity
-│       └── AppointmentBookingRepository.java   # JPA Repository Interface
-└── config/
-    └── AppointmentBookingBeanFactory.java      # Dependency Injection Configuration
 ```http
 POST /api/patient/register          # Register new patient
 ```
