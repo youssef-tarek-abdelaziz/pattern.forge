@@ -1,0 +1,37 @@
+package com.pattern.forge.appointment_management.shell.adapter.in.web;
+
+
+import com.pattern.forge.appointment_management.core.domain.model.Appointment;
+import com.pattern.forge.appointment_management.core.port.in.AppointmentService;
+import com.pattern.forge.appointment_management.core.domain.AppointmentStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/api/appointment")
+public class AppointmentController {
+
+    private final AppointmentService appointmentService;
+
+    @Autowired
+    public AppointmentController(AppointmentService appointmentService) {
+        this.appointmentService = appointmentService;
+    }
+
+    @GetMapping("/{doctorId}")
+    public ResponseEntity<List<Appointment>> getAllAppointment(@PathVariable("doctorId") UUID doctorId, @Param("to") LocalDateTime to) {
+        return ResponseEntity.ok().body(appointmentService.viewAllAppointments(doctorId, to));
+    }
+
+    @PostMapping("/{id}/{doctorId}/status/{status}")
+    public ResponseEntity<?> changeAppointmentStatus(@PathVariable("id") UUID id, @PathVariable("status") AppointmentStatus status) {
+        appointmentService.changeAppointmentStatus(id, status);
+        return ResponseEntity.ok().build();
+    }
+}
