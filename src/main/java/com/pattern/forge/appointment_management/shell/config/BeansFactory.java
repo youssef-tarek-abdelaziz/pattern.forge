@@ -11,10 +11,6 @@ import org.springframework.context.annotation.Configuration;
 public class BeansFactory {
 
     @Bean
-    public AppointmentRepository appointmentRepository() {
-        return new AppointmentPostgresRepo();
-    }
-    @Bean
     public AppointmentService appointmentService(AppointmentRepository appointmentRepository) {
         return new AppointmentServiceImpl(appointmentRepository);
     }
